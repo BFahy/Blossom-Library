@@ -13,6 +13,7 @@ class HashMap:
   def compress(self, hash_code):
     return hash_code % self.array_size
 
+  # Assigns key & value
   def assign(self, key, value):
     array_index = self.compress(self.hash(key))
     #self.array[array_index] = [key, value]
@@ -24,6 +25,7 @@ class HashMap:
         return
     list_at_array.insert(payload)
 
+    # Retrieves value using key as parameter
   def retrieve(self, key):
     array_index = self.compress(self.hash(key))
     list_at_index = self.array[array_index]
@@ -32,10 +34,11 @@ class HashMap:
         return item[1]
     return None
 
+# Setting blossom to length of flowers & assigning key/value
 blossom = HashMap(len(flower_definitions))
-
 for flower in flower_definitions:
   blossom.assign(flower[0], flower[1])
 
+# Tests using key to retrieve value
 print(blossom.retrieve("rose"))
 print(blossom.retrieve("daisy"))
